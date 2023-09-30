@@ -11,9 +11,15 @@ class CategoriesController extends Controller
     }
 
     //Hiển thị danh sách chuyên mục ( Phương thức GET )
-    public function index()
+    public function index(Request $request)
     {
-        return view('clients/categories/list');
+        //return view('clients/categories/list');
+
+        // if(isset($_GET['id'])){
+        //     echo $_GET['id'];
+        // }
+
+        dd($request);
     }
     public function getCategory($id)
     {
@@ -32,7 +38,8 @@ class CategoriesController extends Controller
     //Thêm dữ liệu vào chuyên mục ( Phương thức POST)
     public function handleAddCategory()
     {
-        return redirect(route('categories.add'));
+        print_r($_POST);
+        // return redirect(route('categories.add'));
         // return 'Submit thêm chuyên mục';
     }
     //Xóa dữ liệu (phương thức DELETE)
