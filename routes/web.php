@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\HomeController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,7 +17,9 @@ use App\Http\Controllers\CategoriesController;
 */
 
 //Client Routes
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
+//Danh sách chuyên mục 
 Route::prefix('categories')->group(function () {
     //Danh sách chuyên mục 
     Route::get('/', [CategoriesController::class, 'index'])->name('categories.list');
