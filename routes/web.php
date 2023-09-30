@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Admin\ProductsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +17,7 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-//Client Routes
+// Client Routes
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 //Danh sách chuyên mục 
@@ -40,3 +41,11 @@ Route::prefix('categories')->group(function () {
     //Xóa chuyên mục 
     Route::delete('/delete/{id}',[CategoriesController::class, 'deleteCategory'])->name('categories.delete');
 });
+//Admin Routes  
+Route::prefix('admin')->group(function () {
+    Route::resource('products',ProductsController::class);
+});
+// Route::middleware('auth.admin')->prefix('admin')->group(function () {
+//     Route::get('/',[DashboardController::class, 'index']);
+//     Route::resource('products',ProductsController::class)->middleware('auth.admin');
+// });
