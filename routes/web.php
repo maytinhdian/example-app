@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\ProductsController;
+use App\Http\Controllers\Admin\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +19,12 @@ use App\Http\Controllers\Admin\ProductsController;
 */
 
 // Client Routes
-Route::get('/', [HomeController::class, 'index'])->name('home');
+// Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/', function(){
+    return '<h1 style="text-align: center;">TRANG CHỦ UNICODE</h1>';
+})->name('home');
+
+
 
 //Danh sách chuyên mục 
 Route::prefix('categories')->group(function () {
@@ -43,9 +49,11 @@ Route::prefix('categories')->group(function () {
 });
 //Admin Routes  
 Route::prefix('admin')->group(function () {
+
+    Route::get('/',[DashboardController::class,'index']);
     Route::resource('products',ProductsController::class);
 });
-// Route::middleware('auth.admin')->prefix('admin')->group(function () {
-//     Route::get('/',[DashboardController::class, 'index']);
-//     Route::resource('products',ProductsController::class)->middleware('auth.admin');
-// });
+Route::middleware('auth.admin')->prefix('admin')->group(function () {
+    Route::get('/',[DashboardController::class, 'index']);
+    Route::resource('products',ProductsController::class)->middleware('auth.admin.product');
+});

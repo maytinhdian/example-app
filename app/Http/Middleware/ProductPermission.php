@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class CheckAdminLogin
+class ProductPermission
 {
     /**
      * Handle an incoming request.
@@ -15,6 +15,7 @@ class CheckAdminLogin
      */
     public function handle(Request $request, Closure $next): Response
     {
+        echo 'Request Product Admin permission';
         return $next($request);
     }
 }
