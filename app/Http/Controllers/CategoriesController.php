@@ -6,8 +6,14 @@ use Illuminate\Http\Request;
 
 class CategoriesController extends Controller
 {
-    public function __construct()
+    public function __construct(Request $request)
     {
+        /*
+        Nếu là trang danh sách chuyên mục => hiển thị ra dòng chữ: xin chào unicode 
+         */
+        if($request->is('categories')){
+            echo'<h3> Xin chào Unicode</h3>';
+        }
     }
 
     //Hiển thị danh sách chuyên mục ( Phương thức GET )
