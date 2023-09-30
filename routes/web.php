@@ -20,9 +20,7 @@ use App\Http\Controllers\Admin\DashboardController;
 
 // Client Routes
 // Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/', function(){
-    return '<h1 style="text-align: center;">TRANG CHỦ UNICODE</h1>';
-})->name('home');
+Route::get('/',[HomeController::class, 'index'])->name('home');
 
 
 
